@@ -1,0 +1,18 @@
+{% extends   'base.html' %}
+{% load static %}
+{% block content %}
+<div class="card">
+
+  <h3> You are Sure That /?</h3>
+  <form method="POST" action="">
+    {%csrf_token%}
+    <a href="{% url 'home' %}"> No</a>
+    {{form}}
+    <button type="submit" class="btn btn-primary">Yes</button>
+
+  </form>
+</div>
+
+
+
+{% endblock %}

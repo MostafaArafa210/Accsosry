@@ -1,0 +1,79 @@
+{% extends   'base.html' %}
+{% load static %}
+
+{%block content%}
+
+<h1 class="pt-5 pl-5"> Custumer</h1>
+<div class="container text-center pb-5">
+  <div class="row">
+    <div class="col">
+      <a href="{% url 'create' customer.id %}">Create Order </a>
+    </div>
+  </div>
+</div>
+
+</hr>
+
+<h1 class="pt-5 pl-5"> Search </h1>
+<div class="container text-center pb-5">
+  <div class="row">
+    <div class="col">
+    <form class="d-flex" role="search " method="get">
+       {{serchfilter.form}}
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center pb-5">
+  <div class="row">
+    <div class="col">
+     Name : <span class="badge text-bg-info">{{customer.name}}</span>
+    </div>
+    <div class="col">
+     Email : <span class="badge text-bg-danger">{{customer.email}}</span>
+    </div>
+    <div class="col">
+     Phone : <span class="badge text-bg-dark">{{customer.phone}}</span>
+    </div>
+    <div class="col">
+     Age  : <span class="badge text-bg-dark">{{customer.age}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<table class="table">
+
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">iteam</th>
+      <th scope="col">category</th>
+      <th scope="col">Date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for order in orders %}
+    <tr>
+      <td>{{order.iteam}}</td>
+      <td>{{order.iteam.category}}</td>
+      <td>{{order.data_create}}</td>
+      <td>{{order.status}}</td>
+      <td>
+          <a class="text-dark" href="{% url 'update' order.id %}"><i class="fas fa-edit"></i></a>
+          <a class="text-danger" href="{% url 'delete' order.id %}"><i class="fas  fa-trash-alt"></i></a>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{%endblock%}
+
+
+
+

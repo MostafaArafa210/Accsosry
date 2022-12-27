@@ -1,0 +1,28 @@
+{% extends   'base.html' %}
+{% load static %}
+
+{%block content%}
+
+<h1 class="pt-5 pl-5"> Profile_Info</h1>
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    {% if pic.imge %}
+      <img src="{{pic.imge.url}}" class="card-img-top" alt="...">
+    {%endif%}
+    <div class="card-body">
+      <h5 class="card-title">{{user.username}}</h5>
+      <p class="card-text">{{user.email}}</p>
+      <a href="{% url 'profile'  %}" class="btn btn-primary">Go Cart Order</a>
+      <form class="form-group" method="post" action="" enctype="multipart/form-data">
+  {% csrf_token  %}
+  {{form.as_p}}
+  <button type="submit" class="btn btn-primary">Submite</button>
+</form>
+    </div>
+  </div>
+
+  </div>
+{%endblock%}
+
+
+

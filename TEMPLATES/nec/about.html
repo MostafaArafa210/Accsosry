@@ -1,0 +1,30 @@
+{% extends   'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1 class="p-5">Procut</h1>
+<div class="container  pb-5">
+  <div class="row">
+<table class="table">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">category</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in product %}
+    <tr>
+      <td>{{i.name}}</td>
+      <td>{{i.price}}</td>
+      <td>{{i.category}}</td>
+    </tr>
+  {%endfor %}
+  </tbody>
+</table>
+    </div>
+</div>
+{% endblock %}

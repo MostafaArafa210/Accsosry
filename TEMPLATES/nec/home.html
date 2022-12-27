@@ -1,0 +1,95 @@
+{% extends   'base.html' %}
+{% load static %}
+{%block content%}
+<h1 class="p-5">DashBord</h1>
+<div class="container text-center pb-5">
+  <div class="row">
+    <div class="col class=btn btn-info ">
+      Total Order -> <span class="badge text-bg-primary">{{t_order}}</span>
+    </div>
+    <div class="col">
+      Delivered -> <span class="badge text-bg-success">{{d_order}}</span>
+
+    </div>
+    <div class="col">
+      Pending -> <span class="badge text-bg-warning">{{p_order}}</span>
+    </div>
+    <div class="col">
+      out_of_order --><span class="badge text-bg-danger">{{out_order}}</span>
+
+    </div>
+    <div class="col">
+       in_progress -> <span class="badge text-bg-secondary">{{in_order}}</span>
+    </div>
+    <div class="col">
+       out_of_Stock -> <span class="badge text-bg-secondary">{{in_order}}</span>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+  <div class="card-body">
+<table class="table">
+  <h5 class="card-title">Customer</h5>
+    <h6 class="card-subtitle mb-2 text-muted"><button type="button" class="btn btn-success">New_Customer</button></h6>
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th scope="col">phone</th>
+      <th scope="col">Show</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for cust in customr %}
+    <tr>
+      <td>{{cust.name}}</td>
+      <td>{{cust.email}}</td>
+      <td>{{cust.phone}}</td>
+      <td><a href="{% url 'custumer' cust.id %}"><i class="fas fa-eye"></i></a></td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="card">
+  <div class="card-body">
+    <table class="table">
+    <h5 class="card-title">Order</h5>
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">status</th>
+        <th scope="col">Custumer</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for iteam in orders %}
+      <tr>
+        <td>{{iteam.iteam}}</td>
+        <td>{{iteam.status}}</td>
+        <td>{{iteam.customer}}</td>
+        <td>
+          <a class="text-dark" href="{% url 'update' iteam.id %}"><i class="fas fa-edit"></i></a>
+          <a class="text-danger" href="{% url 'delete' iteam.id %}"><i class="fas  fa-trash-alt"></i></a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+{%endblock%}
+

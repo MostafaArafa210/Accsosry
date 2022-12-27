@@ -1,0 +1,31 @@
+
+{% extends   'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Login</h1>
+
+<div class="container">
+<form method="post">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">username</label>
+    <input  name='username' type="text" class="form-control" >
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input  name='password' type="password" class="form-control" >
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <div class="g-recaptcha" data-sitekey="6LcmhK4jAAAAAM79lVvIDUWACFug2Awk8gLUqNMy"></div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  <a href="{% url 'register' %}">Register </a>
+  </br>
+  <a  href="{% url 'password_reset' %}">Forget Password</a>
+
+{% for msg in messages %}
+<h1> {{msg}} </h1>
+{% endfor  %}
+</div>
+
+{% endblock %}
